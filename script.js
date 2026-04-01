@@ -17,9 +17,15 @@ const promiseFunction = (data) => {
 const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
+	let name = formData.get('name')
+	let age = Number(formData.get('age'))
+	if(!name || !age){
+		alert("Please enter valid details.")
+		return
+	}
     const data = {
-        name: formData.get('name'),
-        age: Number(formData.get('age'))
+        name: name,
+        age: age
     }
     promiseFunction(data)
         .then(() => {
